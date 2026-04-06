@@ -341,10 +341,6 @@
                             <input type="email" id="email" name="email" placeholder="seu@email.com">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="municipio">Município / UF</label>
-                        <input type="text" id="municipio" name="municipio" placeholder="Ex: Goiânia / GO">
-                    </div>
 <div class="form-group">
                         <label for="mensagem">Mensagem</label>
                         <textarea id="mensagem" name="mensagem" placeholder="Descreva sua necessidade..."></textarea>
@@ -427,7 +423,6 @@
         body.append('entry.878068046', form.whatsapp.value);
         body.append('entry.204688924', form.email.value);
 
-        body.append('entry.124531437', form.municipio.value);
         body.append('entry.1609444535', form.mensagem.value);
 
         fetch(GOOGLE_FORM_URL, {

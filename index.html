@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIA &amp; KnowRisk — Inteligência Fiscal para Municípios</title>
+    <style>
+        :root {
+            --deep-carbon: #0F172A;
+            --electric-cyan: #06B6D4;
+            --precision-teal: #0E7490;
+            --white: #FFFFFF;
+            --light-grey: #F8FAFC;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--deep-carbon);
+            line-height: 1.6;
+        }
+
+        /* ============ TOP BAR (contato) ============ */
+        .top-bar {
+            background: var(--deep-carbon);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.825rem;
+            padding: 0.5rem 2rem;
+        }
+
+        .top-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .top-bar a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .top-bar a:hover { color: var(--electric-cyan); }
+
+        /* ============ NAV ============ */
+        nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logos {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .nav-logos img { height: 40px; object-fit: contain; }
+
+        .nav-logos .sep {
+            width: 1px;
+            height: 28px;
+            background: var(--border);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--electric-cyan);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: var(--precision-teal); }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(135deg, var(--deep-carbon) 0%, #1E293B 60%, var(--precision-teal) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
+            top: -150px; right: -80px;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 800;
+            max-width: 750px;
+            margin: 0 auto 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span { color: var(--electric-cyan); }
+
+        .hero p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 0 0;
+        }
+
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        .hero .form-card {
+            background: var(--white);
+            border: none;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero .form-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.25rem;
+            color: var(--deep-carbon);
+        }
+
+        .hero .form-card label { color: var(--deep-carbon); }
+
+        /* ============ SECTIONS ============ */
+        section { padding: 4rem 2rem; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .bg-light { background: var(--light-grey); }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .section-title h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+        .section-title p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ============ CARDS ============ */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.75rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 20px rgba(15,23,42,0.07); }
+
+        .card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            color: var(--precision-teal);
+        }
+        .card p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ============ NÚMEROS ============ */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .stat h4 {
+            font-size: 2rem;
+            color: var(--electric-cyan);
+            font-weight: 800;
+        }
+        .stat p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* ============ FORM ============ */
+        .form-group { margin-bottom: 1rem; }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--electric-cyan);
+            box-shadow: 0 0 0 3px rgba(6,182,212,0.1);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 80px; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+        .btn-submit { width: 100%; padding: 0.7rem; font-size: 0.95rem; margin-top: 0.5rem; }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.6rem;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--deep-carbon);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* ============ TOAST ============ */
+        .toast {
+            position: fixed;
+            bottom: 2rem; right: 2rem;
+            background: var(--deep-carbon);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transform: translateY(120%);
+            transition: transform 0.3s;
+            z-index: 200;
+        }
+        .toast.show { transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .top-bar-inner { justify-content: center; gap: 1rem; font-size: 0.75rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .nav-logos img { height: 32px; }
+            .hero { padding: 4rem 1.5rem; }
+            .hero-split { grid-template-columns: 1fr; }
+            .hero-text { text-align: center; }
+            .hero p { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR — contato -->
+<div class="top-bar">
+    <div class="top-bar-inner">
+        <a href="mailto:contato@knowrisk.com.br">&#9993; contato@knowrisk.com.br</a>
+        <a href="https://wa.me/5511999999999" target="_blank">&#128222; +55 (11) 99999-9999</a>
+        <a href="https://www.linkedin.com/company/knowrisk" target="_blank">&#128279; LinkedIn</a>
+    </div>
+</div>
+
+<!-- NAV — logos FIA + KnowRisk -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-logos">
+            <img src="logo-fundacao-fia-1.png" alt="FIA — Fundação Instituto de Administração">
+            <div class="sep"></div>
+            <img src="logo-knowrisk.png" alt="KnowRisk">
+        </div>
+        <a href="#contato" class="btn">Fale conosco</a>
+    </div>
+</nav>
+
+<!-- HERO + FORMULÁRIO -->
+<section class="hero" id="contato">
+    <div class="container">
+        <div class="hero-split">
+            <div class="hero-text">
+                <h1>Inteligência de <span>dados públicos</span> para decisões estratégicas</h1>
+                <p>Diagnósticos fiscais, benchmarking municipal e soluções analíticas para gestores e consultorias.</p>
+            </div>
+            <div class="form-card">
+                <h3>Fale conosco</h3>
+                <form id="leadForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome *</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail *</label>
+                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="organizacao">Organização</label>
+                            <input type="text" id="organizacao" name="organizacao" placeholder="Prefeitura, empresa...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="interesse">Interesse</label>
+                        <select id="interesse" name="interesse">
+                            <option value="">Selecione...</option>
+                            <option value="diagnostico-fiscal">Diagnóstico Fiscal</option>
+                            <option value="benchmarking">Benchmarking Municipal</option>
+                            <option value="dashboards">Dashboards e Relatórios</option>
+                            <option value="consultoria">Consultoria em Dados / IA</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Descreva sua necessidade..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Enviar</button>
+                    <p class="form-note">Retornamos em até 24h úteis. Seus dados são tratados com sigilo.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUÇÕES -->
+<section id="solucoes">
+    <div class="container">
+        <div class="section-title">
+            <h2>Nossas soluções</h2>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <h3>Diagnóstico Fiscal e Orçamentário</h3>
+                <p>Análise de receitas, despesas, indicadores LRF e oportunidades de arrecadação para todos os municípios brasileiros.</p>
+            </div>
+            <div class="card">
+                <h3>Benchmarking Municipal</h3>
+                <p>Compare seu município com cidades de mesmo porte em mais de 60 indicadores fiscais, educacionais e econômicos.</p>
+            </div>
+            <div class="card">
+                <h3>Dashboards e Relatórios</h3>
+                <p>Painéis interativos e relatórios standalone com dados de 21 fontes públicas oficiais, prontos para apresentação.</p>
+            </div>
+            <div class="card">
+                <h3>Consultoria em Dados e IA</h3>
+                <p>Ciência de dados, modelos preditivos e automações aplicadas a problemas específicos da sua gestão.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="bg-light">
+    <div class="container">
+        <div class="stats">
+            <div class="stat">
+                <h4>5.570</h4>
+                <p>Municípios cobertos</p>
+            </div>
+            <div class="stat">
+                <h4>21</h4>
+                <p>Fontes oficiais</p>
+            </div>
+            <div class="stat">
+                <h4>60+</h4>
+                <p>Indicadores</p>
+            </div>
+            <div class="stat">
+                <h4>10+</h4>
+                <p>Anos em dados</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 KnowRisk &amp; FIA — Fundação Instituto de Administração. Todos os direitos reservados.</p>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            const t = document.querySelector(a.getAttribute('href'));
+            if (t) t.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(e.target));
+        // Integrar com Google Sheets, Formspree ou API
+        console.log('Lead:', data);
+        showToast('Mensagem enviada! Retornaremos em breve.');
+        e.target.reset();
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 4000);
+    }
+</script>
+
+</body>
+</html>

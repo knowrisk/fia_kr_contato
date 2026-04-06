@@ -284,7 +284,17 @@
         }
         .toast.show { transform: translateY(0); }
 
+        /* ============ QR CODE (dentro do hero) ============ */
+        .hero-qrcode {
+            width: 140px;
+            height: 140px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
         @media (max-width: 768px) {
+            .hero-qrcode { display: none; }
             .top-bar-inner { justify-content: center; gap: 1rem; font-size: 0.75rem; }
             .form-row { grid-template-columns: 1fr; }
             .nav-logos img { height: 32px; }
@@ -321,6 +331,7 @@
     <div class="container">
         <div class="hero-split">
             <div class="hero-text">
+                <img src="qrcode_fia_knowrisk.png" alt="QR Code — fia.knowrisk.io" class="hero-qrcode">
                 <h1>Inteligência de <span>dados</span> e <span>IA</span> para decisões estratégicas</h1>
                 <p>Soluções analíticas, automações inteligentes e ciência de dados para organizações públicas e privadas.</p>
             </div>

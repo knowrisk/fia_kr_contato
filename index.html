@@ -247,6 +247,23 @@
 
         .form-group textarea { resize: vertical; min-height: 80px; }
 
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.2rem; }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 400;
+            cursor: pointer;
+            color: var(--deep-carbon);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: auto;
+            accent-color: var(--electric-cyan);
+        }
+
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
         .btn-submit { width: 100%; padding: 0.7rem; font-size: 0.95rem; margin-top: 0.5rem; }
@@ -328,27 +345,53 @@
             <div class="form-card">
                 <h3>Fale conosco</h3>
                 <form id="leadForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                    </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nome">Nome *</label>
-                            <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                            <label for="whatsapp">WhatsApp *</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(11) 99999-9999">
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail *</label>
-                            <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="telefone">Telefone</label>
-                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                            <label for="cargo">Cargo</label>
+                            <select id="cargo" name="cargo">
+                                <option value="">Selecione...</option>
+                                <option value="prefeito">Prefeito(a)</option>
+                                <option value="vice-prefeito">Vice-Prefeito(a)</option>
+                                <option value="sec-financas">Secretário(a) de Finanças</option>
+                                <option value="sec-planejamento">Secretário(a) de Planejamento</option>
+                                <option value="controlador">Controlador(a)</option>
+                                <option value="contador">Contador(a)</option>
+                                <option value="assessor">Assessor(a)</option>
+                                <option value="vereador">Vereador(a)</option>
+                                <option value="consultor">Consultor(a)</option>
+                                <option value="outro">Outro</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="organizacao">Organização</label>
-                            <input type="text" id="organizacao" name="organizacao" placeholder="Prefeitura, empresa...">
+                            <label for="municipio">Município / UF</label>
+                            <input type="text" id="municipio" name="municipio" placeholder="Ex: Goiânia / GO">
                         </div>
                     </div>
-<div class="form-group">
+                    <div class="form-group">
+                        <label>Principal interesse</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="diagnostico"> Diagnóstico fiscal completo</label>
+                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="arrecadacao"> Oportunidades de arrecadação (ISS, IPTU, IRRF)</label>
+                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="benchmarking"> Benchmarking e ranking</label>
+                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="relatorio-camara"> Relatório para apresentar à Câmara</label>
+                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="consultoria"> Consultoria tributária completa</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="mensagem">Mensagem</label>
                         <textarea id="mensagem" name="mensagem" placeholder="Descreva sua necessidade..."></textarea>
                     </div>

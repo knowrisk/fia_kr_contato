@@ -247,22 +247,6 @@
 
         .form-group textarea { resize: vertical; min-height: 80px; }
 
-        .checkbox-group { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.2rem; }
-
-        .checkbox-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 400;
-            cursor: pointer;
-            color: var(--deep-carbon);
-        }
-
-        .checkbox-label input[type="checkbox"] {
-            width: auto;
-            accent-color: var(--electric-cyan);
-        }
 
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
@@ -381,17 +365,7 @@
                             <input type="text" id="municipio" name="municipio" placeholder="Ex: Goiânia / GO">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Principal interesse</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="diagnostico"> Diagnóstico fiscal completo</label>
-                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="arrecadacao"> Oportunidades de arrecadação (ISS, IPTU, IRRF)</label>
-                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="benchmarking"> Benchmarking e ranking</label>
-                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="relatorio-camara"> Relatório para apresentar à Câmara</label>
-                            <label class="checkbox-label"><input type="checkbox" name="interesse" value="consultoria"> Consultoria tributária completa</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
+<div class="form-group">
                         <label for="mensagem">Mensagem</label>
                         <textarea id="mensagem" name="mensagem" placeholder="Descreva sua necessidade..."></textarea>
                     </div>
@@ -476,15 +450,12 @@
         const form = e.target;
         const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf_2G3P_paWDaXmR34_Fg93_dvpDccGRGt8tB6HWwuEbm0K6Q/formResponse';
 
-        const interesses = Array.from(form.querySelectorAll('input[name="interesse"]:checked')).map(c => c.value);
-
         const body = new URLSearchParams();
         body.append('entry.393385077', form.nome.value);
         body.append('entry.878068046', form.whatsapp.value);
         body.append('entry.204688924', form.email.value);
         body.append('entry.2070620347', form.cargo.value);
         body.append('entry.124531437', form.municipio.value);
-        interesses.forEach(v => body.append('entry.187245558', v));
         body.append('entry.1609444535', form.mensagem.value);
 
         fetch(GOOGLE_FORM_URL, {

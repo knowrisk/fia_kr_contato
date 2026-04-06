@@ -341,27 +341,9 @@
                             <input type="email" id="email" name="email" placeholder="seu@email.com">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="cargo">Cargo</label>
-                            <select id="cargo" name="cargo">
-                                <option value="">Selecione...</option>
-                                <option value="prefeito">Prefeito(a)</option>
-                                <option value="vice-prefeito">Vice-Prefeito(a)</option>
-                                <option value="sec-financas">Secretário(a) de Finanças</option>
-                                <option value="sec-planejamento">Secretário(a) de Planejamento</option>
-                                <option value="controlador">Controlador(a)</option>
-                                <option value="contador">Contador(a)</option>
-                                <option value="assessor">Assessor(a)</option>
-                                <option value="vereador">Vereador(a)</option>
-                                <option value="consultor">Consultor(a)</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="municipio">Município / UF</label>
-                            <input type="text" id="municipio" name="municipio" placeholder="Ex: Goiânia / GO">
-                        </div>
+                    <div class="form-group">
+                        <label for="municipio">Município / UF</label>
+                        <input type="text" id="municipio" name="municipio" placeholder="Ex: Goiânia / GO">
                     </div>
 <div class="form-group">
                         <label for="mensagem">Mensagem</label>
@@ -407,10 +389,6 @@
     <div class="container">
         <div class="stats">
             <div class="stat">
-                <h4>10+</h4>
-                <p>Anos de experiência</p>
-            </div>
-            <div class="stat">
                 <h4>IA</h4>
                 <p>Soluções com inteligência artificial</p>
             </div>
@@ -448,7 +426,7 @@
         body.append('entry.393385077', form.nome.value);
         body.append('entry.878068046', form.whatsapp.value);
         body.append('entry.204688924', form.email.value);
-        body.append('entry.2070620347', form.cargo.value);
+
         body.append('entry.124531437', form.municipio.value);
         body.append('entry.1609444535', form.mensagem.value);
 

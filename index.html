@@ -473,11 +473,31 @@
 
     function handleSubmit(e) {
         e.preventDefault();
-        const data = Object.fromEntries(new FormData(e.target));
-        // Integrar com Google Sheets, Formspree ou API
-        console.log('Lead:', data);
-        showToast('Mensagem enviada! Retornaremos em breve.');
-        e.target.reset();
+        const form = e.target;
+        const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf_2G3P_paWDaXmR34_Fg93_dvpDccGRGt8tB6HWwuEbm0K6Q/formResponse';
+
+        const interesses = Array.from(form.querySelectorAll('input[name="interesse"]:checked')).map(c => c.value);
+
+        const body = new URLSearchParams();
+        body.append('entry.393385077', form.nome.value);
+        body.append('entry.878068046', form.whatsapp.value);
+        body.append('entry.204688924', form.email.value);
+        body.append('entry.2070620347', form.cargo.value);
+        body.append('entry.124531437', form.municipio.value);
+        interesses.forEach(v => body.append('entry.187245558', v));
+        body.append('entry.1609444535', form.mensagem.value);
+
+        fetch(GOOGLE_FORM_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body.toString()
+        }).then(() => {
+            showToast('Mensagem enviada com sucesso! Retornaremos em breve.');
+            form.reset();
+        }).catch(() => {
+            showToast('Erro ao enviar. Tente novamente ou entre em contato por e-mail.');
+        });
     }
 
     function showToast(msg) {
